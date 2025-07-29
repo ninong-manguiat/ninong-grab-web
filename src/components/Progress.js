@@ -47,23 +47,37 @@ const Progress = () => {
 
     const renderQueue = () => {
         const { CUSTOMER_DETAILS, ORIGIN, DESTINATION, DATE, ROUTE_COMPUTATION } = bookingData
-        const { NAME, CONTACT_NUMBER, REMARKS } = CUSTOMER_DETAILS
+        const { NAME, CONTACT_NUMBER, REMARKS, BOOKING_DATE, BOOKING_TIME } = CUSTOMER_DETAILS
         const { d, t } = DATE
         const { ESTIMATE_AMOUNT } = ROUTE_COMPUTATION
         
         return (
         <>
-        <Message floating icon>
-            <Icon name='circle notched' loading color='red'/>
-            <MessageContent>
-            <MessageHeader>Looking for a driver near you...</MessageHeader>
-            You may refresh the app..
-            </MessageContent>
-        </Message>
-
         <Header as='h3'>
-       Booking #{bookingCode}
+        Booking #{bookingCode}
         </Header>
+
+        <Message floating icon>
+            {
+                BOOKING_DATE && BOOKING_TIME ? (
+                    <>
+                    <Icon name='check' color='red'/>
+                    <MessageContent>
+                    <MessageHeader>Booking on queue</MessageHeader>
+                    Please wait for our customer representative call...
+                    </MessageContent>
+                    </>
+                ) : (
+                    <>
+                    <Icon name='circle notched' loading color='red'/>
+                    <MessageContent>
+                    <MessageHeader>Looking for a driver near you...</MessageHeader>
+                    You may refresh the app..
+                    </MessageContent>
+                    </>
+                )
+            }         
+        </Message>
 
         <Header as='h3' attached='top'>
        Contact Details
@@ -81,7 +95,8 @@ const Progress = () => {
             <List relaxed>
                 <ListComponent i={'point'} h={ORIGIN.ADDRESS} sh={'Origin'}/> 
                 <ListComponent i={'point'} h={DESTINATION.ADDRESS} sh={'Destination'}/> 
-                <ListComponent i={'time'} h={`${d} ${t}`} sh={'Booking Date and Time'}/> 
+                <ListComponent i={'time'} h={`${d} ${t}`} sh={'Booking Date'}/> 
+                { BOOKING_DATE && BOOKING_TIME && <ListComponent i={'time'} h={`${BOOKING_DATE} ${BOOKING_TIME}`} sh={'Booking Schedule'}/> }
                 <ListComponent i={'sticky note outlines'} h={REMARKS} sh={'Remarks'}/>  
                 <Divider/>
                 <ListComponent i={'tag'} h={ESTIMATE_AMOUNT} sh={'Estimated Amount'}/>
@@ -118,7 +133,8 @@ const Progress = () => {
                     {renderStatusChanges(STATUS)}
                     <Header as={'h3'}>
                     </Header>
-                    <Image src={MAP_PLACEHOLDER} fluid as="a" href={LOC} target='_blank'/>
+                    {/* <Image src={MAP_PLACEHOLDER} fluid as="a" href={LOC} target='_blank'/> */}
+                    <Button fluid size='small' onClick={()=>window.open(LOC)} color='red'>View Location</Button>
                     <Message>
                     <MessageHeader>Trip Details</MessageHeader>
                     <br/>

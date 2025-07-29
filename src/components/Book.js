@@ -7,7 +7,7 @@ import LocationSelector from './LocationSelector.js'
 import appSlice, { getApp } from '../store/slice/app.slice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { API_KEY, API_URL, BOOKINGS, COUNT, getDateTimeNow, META_COUNT, SENDER_NAME, STATUS, STATUS_CODES } from '../utils/constants.js';
+import { API_KEY, API_URL, BOOKINGS, COUNT, getDateTimeNow, META_COUNT, SENDER_NAME, STATUS, STATUS_CODES, VERSION } from '../utils/constants.js';
 import {  doc, runTransaction, serverTimestamp } from "firebase/firestore"; 
 import { db } from '../firebase';
 import { makeID, redirectTo } from '../utils/func.js';
@@ -17,16 +17,17 @@ const Book = () => {
     const mapRef = useRef();
     const { setMarkers, setCustomerDetails } = appSlice.actions
     const { DATA } = useSelector(getApp)
-    const { CUSTOMER_DETAILS, ROUTE_COMPUTATION } = DATA
+    const { CUSTOMER_DETAILS, ROUTE_COMPUTATION, ORIGIN, DESTINATION } = DATA
     const { NAME, CONTACT_NUMBER, REMARKS, BOOK_LATER, BOOKING_DATE, BOOKING_TIME } = CUSTOMER_DETAILS
     const [ modal, setModal ] = useState(false)
     const [ confirmLoading, setConfirmLoading ] = useState(false)
 
     const validateFields = () => {
+        console.log(ORIGIN, DESTINATION)
         if(BOOK_LATER)
-        return NAME!=='' && CONTACT_NUMBER!=='' && ROUTE_COMPUTATION.ESTIMATE_AMOUNT!=='' && BOOKING_DATE !=='' && BOOKING_TIME!==''
+        return NAME!=='' && CONTACT_NUMBER!=='' && ROUTE_COMPUTATION.ESTIMATE_AMOUNT!=='' && ORIGIN.ADDRESS !== '' && DESTINATION.ADDRESS !== '' && BOOKING_DATE !=='' && BOOKING_TIME!==''
         else
-        return NAME!=='' && CONTACT_NUMBER!=='' && ROUTE_COMPUTATION.ESTIMATE_AMOUNT!==''
+        return NAME!=='' && CONTACT_NUMBER!=='' && ROUTE_COMPUTATION.ESTIMATE_AMOUNT!=='' && ORIGIN.ADDRESS !== '' && DESTINATION.ADDRESS !== ''
     }
 
     const panTo = useCallback(({ lat, lng }) => {
@@ -156,6 +157,8 @@ const Book = () => {
                 name={'BOOK_LATER'}
                 onChange={handleCheckChange}
             />
+            <br/>
+            <p className='version'>{VERSION}</p>
             </FormField>
             </Form>
         )

@@ -45,6 +45,8 @@ export const SENDER_NAME = "NinongARVIN"
 // DEPLOYMENT CONFIG - TO CHANGE
 export const LOCAL = false
 
+export const VERSION = 'VERSION 1.1'
+
 // SCRIPT ID
 // 5412554287-q2iieun3su8fhjdpr2ntnd43a6jk02mv.apps.googleusercontent.com
 
