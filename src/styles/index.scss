@@ -1,0 +1,176 @@
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: fixed;
+    min-width: 100% !important;
+    overflow-y: hidden;
+    background-color: white;
+}
+
+html{
+    position: fixed;
+    min-width: 100%;
+}
+
+.root{
+    background-color: white;
+}
+
+.book{
+    .map{
+        height: 200px;
+        width: 100%;
+        background-color: red;
+        position: absolute;
+    }
+
+    .scroll-it{
+        overflow-y: scroll;
+        height: 100vh;
+        position: absolute;
+        z-index: 100;
+        width: 100vw;
+    }
+
+    .map-fill-up{
+        z-index: 100 !important;
+        position: relative;
+        width: 90%;
+        height: 160px;
+        background-color: white;
+        border-radius: 1rem;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+        box-shadow: 0px 1px 36px -18px rgba(0,0,0,0.67);
+        -webkit-box-shadow: 0px 1px 36px -18px rgba(0,0,0,0.67);
+        -moz-box-shadow: 0px 1px 36px -18px rgba(0,0,0,0.67);
+        padding: 3rem 1.5rem;
+        margin-top: 10rem;
+
+        .img-logo-con{
+            border: 2px solid #d52e2d;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 0.5rem;
+            height: 5rem;
+            width: 6rem;
+            position: absolute;
+            top: -0.2rem;
+            left: 50%;
+        }
+
+        .search-inputs{
+            width: 100%;
+
+            .sec{
+                margin-top: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .search{
+                .lft{
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .custom-list{
+        position: fixed;
+        z-index: 100;
+        background-color: white;
+        font-size: 12px;
+        text-align: left;
+        list-style-type: none;
+        padding: 0;
+        border: 1px solid #dededf;
+        border-radius: 5px;
+
+        .custom-list-item{
+            border-bottom: 1px solid #dededf;
+            padding: 0.2rem 0.5rem;
+            height: 2rem;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .book-btns{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        padding: 1rem 2rem;
+        background-color: #ffffff;
+        border-radius: 2rem;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        box-shadow: 0px 1px 36px -18px rgba(0, 0, 0, 0.67);
+        -webkit-box-shadow: 0px 1px 36px -18px rgba(0, 0, 0, 0.67);
+        -moz-box-shadow: 0px 1px 36px -18px rgba(0,0,0,0.67);
+        z-index: 150;
+
+        .pricing{
+            margin-top: 1.2rem !important;
+        }
+    }
+
+    .customer-details{
+        background-color: white;
+        padding: 1.2rem 2rem 20rem 2rem;
+    }
+}
+
+.progress{
+    margin: 1rem;
+
+    .footer-driver{
+        background-color: #ffeded;
+        position: fixed;
+        bottom: 0;
+        height: 20rem;
+        width: 100%;
+        margin: 0;
+        padding: 2rem;
+        left: 0;
+        border-top: 0.5rem solid #da2828;
+        text-align: center;
+
+        .img-footer-driver{
+            margin-top: -6rem;
+            border: 0.5rem solid #da2828;
+        }
+
+        .mt1{
+            margin-top: 1rem;
+        }
+    }
+}
+
+.done{
+    text-align: center;
+
+    .r-adj{
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+}
+
+.ReactSwipeButton{
+    width: 100% !important;
+    height: 4rem !important;
+}
+
+.rsbcText{
+    left: 0 !important;
+}
+
+.textAnimate{
+    font-family: 'Lato' !important;
+    font-size: 20px !important;
+}
